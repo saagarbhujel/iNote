@@ -4,10 +4,14 @@ import Contact from "./components/Contact";
 import Home from "./components/Home";
 import NavBar from "./components/NavBar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import NoteState from "./context/notes/NoteState";
 
 function App() {
   return (
     <>
+    <NoteState>
+
+   
       <BrowserRouter>
         <NavBar />
         <Routes>
@@ -16,6 +20,7 @@ function App() {
           <Route exact path="/contact" element={<Contact />}></Route>
         </Routes>
       </BrowserRouter>
+     </NoteState>
     </>
   );
 }
