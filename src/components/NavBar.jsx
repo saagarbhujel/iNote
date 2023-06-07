@@ -1,13 +1,13 @@
-import React, { useState } from 'react'
-import {Link} from "react-router-dom"
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 
 const NavBar = () => {
-  const [mobileNav, setMobileNav] = useState(false)
+  const [mobileNav, setMobileNav] = useState(true);
 
-  const handdleHam = ()=>{
-    setMobileNav(!mobileNav)
-  }
+  const handdleHam = () => {
+    setMobileNav(!mobileNav);
+  };
 
   return (
     <>
@@ -31,31 +31,35 @@ const NavBar = () => {
         {/* FOR MOBILE */}
 
         <div onClick={handdleHam} className="flex  items-center md:hidden">
-          {!mobileNav ? <AiOutlineClose size={20}/> : <AiOutlineMenu size={20} />}
+          {!mobileNav ? (
+            <AiOutlineClose size={20} />
+          ) : (
+            <AiOutlineMenu size={20} />
+          )}
         </div>
-        
-        <div className={!mobileNav ? 'nav-list fixed top-0 left-0 w-[60%] h-full mt-[60px] border-r border-r-purple-900  bg-purple-200  ease-linear duration-300 md:hidden ': 'fixed left-[-100%]'}>
+
+        <div
+          className={
+            !mobileNav
+              ? "nav-list fixed left-0 top-[60px] w-[60%] h-full z-0 border-r border-r-purple-900 bg-purple-200  ease-linear duration-300 md:hidden"
+              : "fixed left-[-100%]"
+          }
+        >
           <ul className=" text-black uppercase text-center ">
             <Link to="/">
-              <li className="p-4  hover:underline">
-                Home
-              </li>
+              <li className="p-4  hover:underline">Home</li>
             </Link>
             <Link to="/about">
-              <li className="p-4 hover:underline ">
-                About
-              </li>
+              <li className="p-4 hover:underline ">About</li>
             </Link>
             <Link to="/contact">
-              <li className="p-4  hover:underline ">
-                Contact
-              </li>
+              <li className="p-4  hover:underline ">Contact</li>
             </Link>
           </ul>
         </div>
       </nav>
     </>
   );
-}
+};
 
-export default NavBar
+export default NavBar;
