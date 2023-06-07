@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState,useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 
 const NavBar = () => {
@@ -8,6 +8,11 @@ const NavBar = () => {
   const handdleHam = () => {
     setMobileNav(!mobileNav);
   };
+  let location = useLocation()
+
+  useEffect(()=>{
+    console.log(location.pathname)
+  },[location])
 
   return (
     <>
@@ -16,14 +21,35 @@ const NavBar = () => {
         <h1 className="w-full text-3xl font-bold text-[#00df9a] ">iNote</h1>
         <div className="nav-list">
           <ul className="hidden md:flex justify-center px-4 mr-16 gap-[4vw] uppercase">
-            <Link to="/">
-              <li className="hover:underline">Home</li>
+            <Link
+              className={`${
+                location.pathname === "/" ? "text-orange-400" : ""
+              } `}
+              to="/"
+            >
+              <li className=" hover:underline underline-offset-8">
+                Home
+              </li>
             </Link>
-            <Link to="/about">
-              <li className="hover:underline ">About</li>
+            <Link
+              className={`${
+                location.pathname === "/about" ? "text-orange-400" : ""
+              }`}
+              to="/about"
+            >
+              <li className="hover:underline underline-offset-8">
+                About
+              </li>
             </Link>
-            <Link to="/contact">
-              <li className="hover:underline">Contact</li>
+            <Link
+              className={`${
+                location.pathname === "/contact" ? "text-orange-400" : ""
+              }`}
+              to="/contact"
+            >
+              <li className="hover:underline underline-offset-8">
+                Contact
+              </li>
             </Link>
           </ul>
         </div>
@@ -46,14 +72,26 @@ const NavBar = () => {
           }
         >
           <ul className=" text-black uppercase text-center ">
-            <Link to="/">
-              <li className="p-4  hover:underline">Home</li>
+            <Link
+              className={`${
+                location.pathname === "/" ? "text-orange-400" : ""
+              }`}
+              to="/"
+            >
+              <li className="p-4  hover:underline underline-offset-8">Home</li>
             </Link>
-            <Link to="/about">
-              <li className="p-4 hover:underline ">About</li>
+            <Link
+               className={`${location.pathname === "/about" ? "text-orange-400":"" }`} to="/about"
+            >
+              <li className="p-4 hover:underline underline-offset-8 ">About</li>
             </Link>
-            <Link to="/contact">
-              <li className="p-4  hover:underline ">Contact</li>
+            <Link
+              className={`${
+                location.pathname === "/contact" ? "text-orange-400" : ""
+              }`}
+              to="/contact"
+            >
+              <li className="p-4  hover:underline underline-offset-8">Contact</li>
             </Link>
           </ul>
         </div>
