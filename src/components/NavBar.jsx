@@ -18,7 +18,7 @@ const NavBar = () => {
     <>
       {/* FOR BIIGER DEVICES */}
       <nav className=" flex justify-between h-15 mx-w-[1240px] mx-auto px-4 bg-purple-900 text-white py-3 text-lg relative z-10 ">
-        <h1 className="w-full text-3xl font-bold text-[#00df9a] ">iNote</h1>
+        <h1 className="w-full text-3xl font-bold text-[#ffffff] ">iNote</h1>
         <div className="nav-list">
           <ul className="hidden md:flex justify-center px-4 mr-16 gap-[4vw] uppercase">
             <Link
