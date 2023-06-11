@@ -20,7 +20,7 @@ const NoteItem = (props) => {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-6 h-6 cursor-pointer"
+                className="w-6 h-6 cursor-pointer hover:stroke-purple-700"
               >
                 <path
                   strokeLinecap="round"
@@ -35,7 +35,7 @@ const NoteItem = (props) => {
                 viewBox="0 0 24 24"
                 stroke-width="1.5"
                 stroke="currentColor"
-                class="w-6 h-6 cursor-pointer"
+                class="w-6 h-6 cursor-pointer hover:stroke-purple-700"
               >
                 <path
                   stroke-linecap="round"
