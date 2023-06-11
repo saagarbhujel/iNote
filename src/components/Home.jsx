@@ -6,7 +6,7 @@ const Home = () => {
 
   
   return (
-    <div className="container flex justify-center items-center flex-col mt-6">
+    <div className=" flex justify-center items-center flex-col mt-20">
       <h1 className="text-[2rem] underline underline-offset-4">Add a Note</h1>
       <form action="submit" className="max-w-md mx-auto">
         <div className="mb-4">

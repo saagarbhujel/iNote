@@ -7,13 +7,15 @@ const Notes = () => {
     const { notes, setNotes } = context;
   return (
     <>
-      <div className="mt-4">
-        <h2 className="text-[1.8rem] underline underline-offset-4">
+      <div className=" mt-4 mb-4 mx-5">
+        <h2 className="text-[1.8rem] underline underline-offset-4 mx-5">
           Your Notes
         </h2>
-        {notes.map((note) => {
-          return <NoteItem note={note} key={note._id}/>;
-        })}
+        <div className="md:grid grid-cols-3 content-center lg:grid-cols-4 ">
+          {notes.map((note) => {
+            return <NoteItem note={note} key={note._id} />;
+          })}
+        </div>
       </div>
     </>
   );

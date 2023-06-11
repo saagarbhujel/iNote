@@ -1,18 +1,21 @@
-import React from 'react'
-
+import React from "react";
 
 const NoteItem = (props) => {
-    const {note} = props
+  const { note } = props;
   return (
-<>
-<div>
-    {note.title}
-    {note.description}
+    <>
+      {/* {note.title}
+      {note.description} */}
+      <div className="card border rounded-lg shadow-md m-4 p-4  columns-md ">
+        <div className="card-body ">
+          <div className="card-title font-bold text-xl mb-2">{note.title}</div>
+          <div className="card-description text-gray-700">
+            {note.description}
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
 
-
-</div>
-</>
-  )
-}
-
-export default NoteItem
+export default NoteItem;
