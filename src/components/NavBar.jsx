@@ -8,6 +8,15 @@ const NavBar = () => {
   const handdleHam = () => {
     setMobileNav(!mobileNav);
   };
+
+  // useEffect(() => {
+  //   if (!mobileNav) {
+  //     document.body.classList.add("overflow-hidden");
+  //   } else {
+  //     document.body.classList.remove("overflow-hidden");
+  //   }
+  // }, [mobileNav]);
+
   let location = useLocation()
 
   useEffect(()=>{
@@ -17,7 +26,7 @@ const NavBar = () => {
   return (
     <>
       {/* FOR BIIGER DEVICES */}
-      <nav className=" flex justify-between h-15 mx-w-[1240px] mx-auto px-4 bg-purple-900 text-white py-3 text-lg relative z-10 ">
+      <nav className=" fixed top-0 w-full flex justify-between h-15 mx-w-[1240px] mx-auto px-4 bg-purple-900 text-white py-3 text-lg  z-10 ">
         <h1 className="w-full text-3xl font-bold text-[#ffffff] ">iNote</h1>
         <div className="nav-list">
           <ul className="hidden md:flex justify-center px-4 mr-16 gap-[4vw] uppercase">
@@ -56,7 +65,7 @@ const NavBar = () => {
 
         {/* FOR MOBILE */}
 
-        <div onClick={handdleHam} className="flex  items-center md:hidden">
+        <div onClick={handdleHam} className=" flex  items-center md:hidden">
           {!mobileNav ? (
             <AiOutlineClose size={20} />
           ) : (
@@ -71,7 +80,7 @@ const NavBar = () => {
               : "fixed left-[-100%]"
           }
         >
-          <ul className=" text-black uppercase text-center ">
+          <ul className="  text-black uppercase text-center ">
             <Link
               className={`${
                 location.pathname === "/" ? "text-orange-400" : ""
