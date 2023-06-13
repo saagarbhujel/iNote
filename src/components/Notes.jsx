@@ -1,12 +1,15 @@
 import React, { useContext } from "react";
 import noteContext from "../context/notes/NoteContext";
 import NoteItem from "./NoteItem";
+import AddNote from "./AddNote";
 
 const Notes = () => {
     const context = useContext(noteContext);
-    const { notes, setNotes } = context;
+    const { notes, addNote} = context;
   return (
     <>
+     <AddNote/>  
+
       <div className=" mt-4 mb-4 mx-5">
         <h2 className="text-[1.8rem] underline underline-offset-4 mx-5">
           Your Notes
