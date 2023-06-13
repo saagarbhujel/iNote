@@ -1,83 +1,27 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import NoteContext from "./NoteContext";
+import axios from "axios";
 
 const NoteState = (props) => {
-  const notesInitial = [
-    {
-      _id: "64844146b37f51041d31b587",
-      user: "6473790dab9b1e7a06612e3e",
-      title: "First note",
-      description: "this is my first notes",
-      tag: "personal",
-      date: "2023-06-10T09:24:22.659Z",
-      __v: 0,
-    },
-    {
-      _id: "64845517dfcb383d47753b56",
-      user: "6473790dab9b1e7a06612e3e",
-      title: "Second note",
-      description: "this is my first notes",
-      tag: "personal",
-      date: "2023-06-10T10:48:55.414Z",
-      __v: 0,
-    },
-    {
-      _id: "6485c0b33942f37c0dde903a",
-      user: "6473790dab9b1e7a06612e3e",
-      title: "Second note",
-      description: "this is my first notes",
-      tag: "personal",
-      date: "2023-06-11T12:40:19.400Z",
-      __v: 0,
-    },
-    {
-      _id: "6485c0b43942f37c0dde903c",
-      user: "6473790dab9b1e7a06612e3e",
-      title: "Second note",
-      description: "this is my first notes",
-      tag: "personal",
-      date: "2023-06-11T12:40:20.097Z",
-      __v: 0,
-    },
-    {
-      _id: "6485f2d73942f37c0dde9047",
-      user: "6473790dab9b1e7a06612e3e",
-      title: "third note",
-      description: "this is my third notes",
-      tag: "personal",
-      date: "2023-06-11T16:14:15.910Z",
-      __v: 0,
-    },
-    {
-      _id: "6485f2d83942f37c0dde9049",
-      user: "6473790dab9b1e7a06612e3e",
-      title: "third note",
-      description: "this is my third notes",
-      tag: "personal",
-      date: "2023-06-11T16:14:16.872Z",
-      __v: 0,
-    },
-    {
-      _id: "6485f2d93942f37c0dde904b",
-      user: "6473790dab9b1e7a06612e3e",
-      title: "third note",
-      description: "this is my third notes",
-      tag: "personal",
-      date: "2023-06-11T16:14:17.558Z",
-      __v: 0,
-    },
-    {
-      _id: "6485f2da3942f37c0dde904d",
-      user: "6473790dab9b1e7a06612e3e",
-      title: "third note",
-      description: "this is my third notes",
-      tag: "personal",
-      date: "2023-06-11T16:14:18.272Z",
-      __v: 0,
-    },
-  ];
-
+  const URL = "http://localhost:4000";
+  const notesInitial = []
   const [notes, setNotes] = useState(notesInitial);
+
+  //FETCH ALL NOTES
+  const fetchNotes = async()=>{
+    const dbNotes = await axios.get(`${URL}/api/notes/notes `, {
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjQ3Mzc5MGRhYjliMWU3YTA2NjEyZTNlIn0sImlhdCI6MTY4NTI5MTQxN30.y7TLtV_p1ZnuRINaAtU0f1c6J60V8fnHPN5peBOxV_g",
+      },
+    });
+    setNotes(dbNotes.data)
+    console.log(dbNotes.data)
+  }
+
+  useEffect(()=>{
+    fetchNotes()
+  },[])
 
   //ADD NOTES
   const addNote = (title, description, tag)=>{
