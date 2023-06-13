@@ -17,7 +17,7 @@ const Notes = () => {
         <div className="md:grid grid-cols-3 content-center lg:grid-cols-4 ">
           {notes.map((note) => {
             // console.log(note)
-            return <NoteItem note={note} key={note._id} />;
+            return <NoteItem key={note._id}  note={note} />;
            
           })
         }

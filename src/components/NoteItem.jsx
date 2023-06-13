@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import noteContext from "../context/notes/NoteContext";
 
 const NoteItem = (props) => {
-  const { note } = props;
+  const { note} = props;
 
   const context = useContext(noteContext);
   const { deleteNote } = context;
@@ -15,7 +15,7 @@ const NoteItem = (props) => {
     <>
       {/* {note.title}
       {note.description} */}
-      <div className="card border rounded-lg shadow-md hover:shadow-lg m-4 p-4  columns-md ">
+      <div key={note._id} className="card border rounded-lg shadow-md hover:shadow-lg m-4 p-4  columns-md ">
         <div className="card-body ">
           <div className="flex justify-between items-center card-title font-bold text-xl mb-2">
             {note.title}
