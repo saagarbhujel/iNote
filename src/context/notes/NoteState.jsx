@@ -25,9 +25,7 @@ const NoteState = (props) => {
    }
   }
 
-  useEffect(()=>{
-    fetchNotes()
-  },[shouldRefresh])
+ 
 
   //ADD NOTES
   const addNote = async(title, description, tag)=>{
@@ -89,7 +87,7 @@ const NoteState = (props) => {
 
   return (
     <>
-      <NoteContext.Provider value={{ notes, addNote, deleteNote, editNote }}>
+      <NoteContext.Provider value={{ notes, addNote, deleteNote, editNote, fetchNotes, shouldRefresh }}>
         {props.children}
       </NoteContext.Provider>
     </>
