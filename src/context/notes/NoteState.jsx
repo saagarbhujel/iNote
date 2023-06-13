@@ -72,6 +72,7 @@ const NoteState = (props) => {
           return note._id !== id;
         });
         setNotes(newNote);
+        setShouldRefresh((v) => !v);
     } catch (error) {
       console.log(error)
     }
