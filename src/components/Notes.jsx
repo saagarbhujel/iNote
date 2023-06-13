@@ -16,8 +16,11 @@ const Notes = () => {
         </h2>
         <div className="md:grid grid-cols-3 content-center lg:grid-cols-4 ">
           {notes.map((note) => {
+            // console.log(note)
             return <NoteItem note={note} key={note._id} />;
-          })}
+           
+          })
+        }
         </div>
       </div>
     </>
