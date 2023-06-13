@@ -102,9 +102,12 @@ console.log("Adding notes")
   }
 
   //DELETE NOTES
-  const deleteNote = ()=>{
-
-  }
+  const deleteNote = (id)=>{
+    //TODO API CALL
+    console.log("deleteing note with id " + id)
+    const newNote = notes.filter((note)=>{return note._id!== id})
+    setNotes(newNote)
+}
 
 
   //EDIT NOTES
