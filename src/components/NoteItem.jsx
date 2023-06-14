@@ -2,22 +2,20 @@ import React, { useContext, useState } from "react";
 import noteContext from "../context/notes/NoteContext";
 
 const NoteItem = (props) => {
-  const { note, updateNote} = props;
-
+  const { note, updateNote } = props;
   const context = useContext(noteContext);
   const { deleteNote } = context;
 
 
-  const noteDelete =()=>{
-    deleteNote(note._id)
-  }
-
+  const noteDelete = () => {
+    deleteNote(note._id);
+  };
 
   return (
     <>
       {/* {note.title}
       {note.description} */}
-      <div key={note._id} className="card border rounded-lg shadow-md hover:shadow-lg m-4 p-4  columns-md ">
+      <div className="card border rounded-lg shadow-md hover:shadow-lg m-4 p-4  columns-md ">
         <div className="card-body ">
           <div className="flex justify-between items-center card-title font-bold text-xl mb-2">
             {note.title}
@@ -29,7 +27,9 @@ const NoteItem = (props) => {
                 strokeWidth="1.5"
                 stroke="currentColor"
                 className="w-6 h-6 cursor-pointer hover:stroke-purple-700"
-                onClick={()=>{updateNote(note)}}
+                onClick={() => {
+                  updateNote(note);
+                }}
               >
                 <path
                   strokeLinecap="round"
