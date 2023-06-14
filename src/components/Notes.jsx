@@ -1,48 +1,48 @@
-import React, { useContext , useEffect, useState} from "react";
+import React, { useContext, useEffect, useState } from "react";
 import noteContext from "../context/notes/NoteContext";
 import NoteItem from "./NoteItem";
 import AddNote from "./AddNote";
 
 const Notes = () => {
-    const context = useContext(noteContext);
-    const { notes, fetchNotes,shouldRefresh } = context;
+  const context = useContext(noteContext);
+  const { notes, fetchNotes, shouldRefresh } = context;
 
-     useEffect(() => {
-       fetchNotes();
-     }, [shouldRefresh]);
+  useEffect(() => {
+    fetchNotes();
+  }, [shouldRefresh]);
 
+  // FOR UPDATING NOTE
+  const updateNote = (currentNote) => {
+    setModalOpen(true);
+    setNote({
+      etitle: currentNote.title,
+      etag: currentNote.tag,
+      edescription: currentNote.description,
+    });
+  };
 
-     // FOR UPDATING NOTE
-     const updateNote = (currentNote)=>{
-      setModalOpen(true)
-      setNote({etitle:currentNote.title, etag: currentNote.tag, edescription: currentNote.description})
-     }
+  //FOR MODAL
+  const [modalOpen, setModalOpen] = useState(false);
 
-     //FOR MODAL
-     const [modalOpen, setModalOpen] = useState(false)
+  const modalClose = () => {
+    setModalOpen(false);
+  };
 
-   
+  //EDIT NOTES
+  const [note, setNote] = useState({
+    etitle: "",
+    edescription: "",
+    etag: "default",
+  });
 
-     const modalClose = ()=>{
-      setModalOpen(false)
-     }
+  const addNotes = (e) => {
+    e.preventDefault();
+    console.log("updating notes", note);
+  };
 
-      //EDIT NOTES
-      const [note, setNote] = useState({
-        etitle: "",
-       edescription: "",
-        etag: "default",
-      });
-
-      const addNotes = (e) => {
-        e.preventDefault();
-        console.log("updating notes", note)
-
-      };
-
-      const onChange = (e) => {
-        setNote({ ...note, [e.target.name]: e.target.value });
-      };
+  const onChange = (e) => {
+    setNote({ ...note, [e.target.name]: e.target.value });
+  };
 
   return (
     <>
@@ -123,7 +123,10 @@ const Notes = () => {
 
           {/* <!-- Modal footer --> */}
           <div className="flex justify-end">
-            <button onClick={addNotes} className="px-4 py-2 bg-purple-900 hover:bg-purple-600 text-white rounded">
+            <button
+              onClick={addNotes}
+              className="px-4 py-2 bg-purple-900 hover:bg-purple-600 text-white rounded"
+            >
               Update
             </button>
             <button
@@ -141,16 +144,20 @@ const Notes = () => {
           Your Notes
         </h2>
         <div className="md:grid grid-cols-3 content-center lg:grid-cols-4 ">
-          {notes.map((note) => {
+          {notes.map((note, index) => {
             // console.log(note)
             return (
-              <NoteItem key={note._id} note={note} updateNote={updateNote} />
+              <NoteItem
+                key={note._id + index}
+                note={note}
+                updateNote={updateNote}
+              />
             );
           })}
         </div>
       </div>
     </>
   );
-}
+};
 
-export default Notes
+export default Notes;
