@@ -5,45 +5,52 @@ import AddNote from "./AddNote";
 
 const Notes = () => {
   const context = useContext(noteContext);
-  const { notes, fetchNotes, shouldRefresh } = context;
+  const { notes, fetchNotes, shouldRefresh,editNote } = context;
+   const [note, setNote] = useState({id:"",  etitle: "", edescription: "", etag: "default",  });
+   const [modalOpen, setModalOpen] = useState(false);
+  
 
   useEffect(() => {
     fetchNotes();
   }, [shouldRefresh]);
 
+
+
+
   // FOR UPDATING NOTE
-  const updateNote = (currentNote) => {
-    setModalOpen(true);
-    setNote({
-      etitle: currentNote.title,
-      etag: currentNote.tag,
-      edescription: currentNote.description,
-    });
-  };
+const updateNote = (currentNote) => {
+  setModalOpen(true);
+  setNote({
+    id: currentNote._id,
+    etitle: currentNote.title,
+    etag: currentNote.tag,
+    edescription: currentNote.description,
+  });
+};
 
   //FOR MODAL
-  const [modalOpen, setModalOpen] = useState(false);
-
   const modalClose = () => {
     setModalOpen(false);
   };
-
+  
+  
   //EDIT NOTES
-  const [note, setNote] = useState({
-    etitle: "",
-    edescription: "",
-    etag: "default",
-  });
-
   const addNotes = (e) => {
     e.preventDefault();
     console.log("updating notes", note);
+    editNote(note.id, note.etitle, note.edescription, note.etag)
     modalClose()
   };
 
   const onChange = (e) => {
     setNote({ ...note, [e.target.name]: e.target.value });
   };
+
+
+
+
+  
+
 
   return (
     <>

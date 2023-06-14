@@ -85,9 +85,35 @@ const NoteState = (props) => {
 
 
   //EDIT NOTES
-  const editNote = ()=>{
-
+  const editNote = async (id,title, description, tag)=>{
+    try {
+     const response = await axios.put(`${URL}/api/notes/updatenotes/${id}`,{
+        title,
+         description,
+         tag
+      },{
+         headers: {
+            "Content-Type": "application/json",
+            "auth-token":
+              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjQ3Mzc5MGRhYjliMWU3YTA2NjEyZTNlIn0sImlhdCI6MTY4NTI5MTQxN30.y7TLtV_p1ZnuRINaAtU0f1c6J60V8fnHPN5peBOxV_g",
+          },
+      });
+      console.log('updated note',response.data)
+      setShouldRefresh((v) => !v);
+    } catch (error) {
+      console.log(error)
+    }
+    for (let index = 0; index < notes.length; index++) {
+      const element = notes[index];
+      if (element._id===id) {
+        element.title=title,
+        element.description= description,
+        element.tag=tag
+      }
+      
+    }
   }
+
 
 
   return (
