@@ -11,9 +11,13 @@ const Notes = () => {
        fetchNotes();
      }, [shouldRefresh]);
 
+
+     // FOR UPDATING NOTE
      const updateNote = (note)=>{
 
      }
+
+     //FOR MODAL
      const [modalOpen, setModalOpen] = useState(false)
      const ref = useRef(null)
      const openModal =()=>{
@@ -27,6 +31,8 @@ const Notes = () => {
   return (
     <>
       <AddNote />
+
+      {/* MODAL */}
       <button onClick={openModal}
         id="openModalButton"
         className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded"
