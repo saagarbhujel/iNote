@@ -37,7 +37,7 @@ const updateNote = (currentNote) => {
   //EDIT NOTES
   const addNotes = (e) => {
     e.preventDefault();
-    console.log("updating notes", note);
+    // console.log("updating notes", note);
     editNote(note.id, note.etitle, note.edescription, note.etag)
     modalClose()
   };

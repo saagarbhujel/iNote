@@ -19,7 +19,7 @@ const NoteState = (props) => {
        },
      });
      setNotes(dbNotes.data);
-     console.log(dbNotes.data);
+    //  console.log(dbNotes.data);
    } catch (error) {
     console.log(error)
    }
@@ -71,7 +71,7 @@ const NoteState = (props) => {
           },
         });
         //TODO API CALL
-        console.log("deleteing note with id " + id);
+        // console.log("deleteing note with id " + id);
         const newNote = notes.filter((note) => {
           return note._id !== id;
         });
@@ -98,7 +98,7 @@ const NoteState = (props) => {
               "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjQ3Mzc5MGRhYjliMWU3YTA2NjEyZTNlIn0sImlhdCI6MTY4NTI5MTQxN30.y7TLtV_p1ZnuRINaAtU0f1c6J60V8fnHPN5peBOxV_g",
           },
       });
-      console.log('updated note',response.data)
+      // console.log('updated note',response.data)
       setShouldRefresh((v) => !v);
     } catch (error) {
       console.log(error)
