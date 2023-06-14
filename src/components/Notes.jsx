@@ -38,6 +38,7 @@ const Notes = () => {
   const addNotes = (e) => {
     e.preventDefault();
     console.log("updating notes", note);
+    modalClose()
   };
 
   const onChange = (e) => {
