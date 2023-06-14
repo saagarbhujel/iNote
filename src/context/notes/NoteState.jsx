@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import NoteContext from "./NoteContext";
 import axios from "axios";
 

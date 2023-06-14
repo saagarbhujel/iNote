@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import noteContext from "../context/notes/NoteContext";
 
 const NoteItem = (props) => {
-  const { note} = props;
+  const { note, updateNote} = props;
 
   const context = useContext(noteContext);
   const { deleteNote } = context;
@@ -11,6 +11,8 @@ const NoteItem = (props) => {
   const noteDelete =()=>{
     deleteNote(note._id)
   }
+
+
   return (
     <>
       {/* {note.title}
@@ -27,6 +29,7 @@ const NoteItem = (props) => {
                 strokeWidth="1.5"
                 stroke="currentColor"
                 className="w-6 h-6 cursor-pointer hover:stroke-purple-700"
+                onClick={()=>{updateNote(note)}}
               >
                 <path
                   strokeLinecap="round"

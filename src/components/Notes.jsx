@@ -1,4 +1,4 @@
-import React, { useContext , useEffect, useRef, useState} from "react";
+import React, { useContext , useEffect, useState} from "react";
 import noteContext from "../context/notes/NoteContext";
 import NoteItem from "./NoteItem";
 import AddNote from "./AddNote";
@@ -14,15 +14,13 @@ const Notes = () => {
 
      // FOR UPDATING NOTE
      const updateNote = (note)=>{
-
+      setModalOpen(true)
      }
 
      //FOR MODAL
      const [modalOpen, setModalOpen] = useState(false)
-     const ref = useRef(null)
-     const openModal =()=>{
-      setModalOpen(true)
-     }
+
+   
 
      const modalClose = ()=>{
       setModalOpen(false)
@@ -33,15 +31,9 @@ const Notes = () => {
       <AddNote />
 
       {/* MODAL */}
-      <button onClick={openModal}
-        id="openModalButton"
-        className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded"
-      >
-        Open Modal
-      </button>
 
       <div
-        ref={ref}
+
         className={`fixed inset-0 flex items-center justify-center z-50 ${modalOpen ? "" : "hidden"} `}
       >
         {/* <!-- Modal background --> */}
@@ -65,7 +57,7 @@ const Notes = () => {
 
           {/* <!-- Modal body --> */}
           <div className="mb-4">
-            <label for="input1" className="block text-gray-700  mb-2">
+            <label htmlFor="input1" className="block text-gray-700  mb-2">
               Title:
             </label>
             <input
@@ -76,7 +68,7 @@ const Notes = () => {
           </div>
 
           <div className="mb-4">
-            <label for="input2" className="block text-gray-700  mb-2">
+            <label htmlFor="input2" className="block text-gray-700  mb-2">
               Tag:
             </label>
             <input
@@ -87,7 +79,7 @@ const Notes = () => {
           </div>
 
           <div className="mb-4">
-            <label for="textarea" className="block text-gray-700  mb-2">
+            <label htmlFor="textarea" className="block text-gray-700  mb-2">
               Description:
             </label>
             <textarea
