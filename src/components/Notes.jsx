@@ -1,4 +1,4 @@
-import React, { useContext , useEffect} from "react";
+import React, { useContext , useEffect, useRef, useState} from "react";
 import noteContext from "../context/notes/NoteContext";
 import NoteItem from "./NoteItem";
 import AddNote from "./AddNote";
@@ -14,22 +14,41 @@ const Notes = () => {
      const updateNote = (note)=>{
 
      }
+     const [modalOpen, setModalOpen] = useState(false)
+     const ref = useRef(null)
+     const openModal =()=>{
+      setModalOpen(true)
+     }
+
+     const modalClose = ()=>{
+      setModalOpen(false)
+     }
+
   return (
     <>
       <AddNote />
+      <button onClick={openModal}
+        id="openModalButton"
+        className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded"
+      >
+        Open Modal
+      </button>
 
-      <div class="fixed inset-0 flex items-center justify-center z-50">
+      <div
+        ref={ref}
+        className={`fixed inset-0 flex items-center justify-center z-50 ${modalOpen ? "" : "hidden"} `}
+      >
         {/* <!-- Modal background --> */}
-        <div class="fixed inset-0 bg-gray-800 opacity-75"></div>
+        <div className="fixed inset-0 bg-gray-800 opacity-75"></div>
 
         {/* <!-- Modal content --> */}
-        <div class="bg-white w-96 p-6 rounded-lg shadow-lg z-10">
+        <div className="bg-white w-96 p-6 rounded-lg shadow-lg z-10">
           {/* <!-- Modal header --> */}
-          <div class="flex items-center justify-between mb-4">
-            <h2 class="text-xl font-bold">Edit Note</h2>
-            <button class="text-gray-500 hover:text-gray-700">
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-xl font-bold">Edit Note</h2>
+            <button onClick={modalClose} className="text-gray-500 hover:text-gray-700">
               <svg
-                class="h-6 w-6 fill-current"
+                className="h-6 w-6 fill-current"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 20 20"
               >
@@ -39,44 +58,44 @@ const Notes = () => {
           </div>
 
           {/* <!-- Modal body --> */}
-          <div class="mb-4">
-            <label for="input1" class="block text-gray-700  mb-2">
+          <div className="mb-4">
+            <label for="input1" className="block text-gray-700  mb-2">
               Title:
             </label>
             <input
               id="input1"
               type="text"
-              class="w-full border border-gray-300 rounded focus:outline-none focus:border-blue-500 px-3 py-2"
+              className="w-full border border-gray-300 rounded focus:outline-none focus:border-blue-500 px-3 py-2"
             />
           </div>
 
-          <div class="mb-4">
-            <label for="input2" class="block text-gray-700  mb-2">
+          <div className="mb-4">
+            <label for="input2" className="block text-gray-700  mb-2">
               Tag:
             </label>
             <input
               id="input2"
               type="text"
-              class="w-full border border-gray-300 rounded focus:outline-none focus:border-blue-500 px-3 py-2"
+              className="w-full border border-gray-300 rounded focus:outline-none focus:border-blue-500 px-3 py-2"
             />
           </div>
 
-          <div class="mb-4">
-            <label for="textarea" class="block text-gray-700  mb-2">
+          <div className="mb-4">
+            <label for="textarea" className="block text-gray-700  mb-2">
               Description:
             </label>
             <textarea
               id="textarea"
-              class="w-full border border-gray-300 rounded focus:outline-none focus:border-blue-500 px-3 py-2 resize-none"
+              className="w-full border border-gray-300 rounded focus:outline-none focus:border-blue-500 px-3 py-2 resize-none"
             ></textarea>
           </div>
 
           {/* <!-- Modal footer --> */}
-          <div class="flex justify-end">
-            <button class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded">
+          <div className="flex justify-end">
+            <button className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded">
               Save
             </button>
-            <button class="px-4 py-2 ml-2 bg-gray-300 hover:bg-gray-400 rounded">
+            <button onClick={modalClose} className="px-4 py-2 ml-2 bg-gray-300 hover:bg-gray-400 rounded">
               Cancel
             </button>
           </div>
