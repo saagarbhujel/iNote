@@ -46,7 +46,11 @@ const NoteState = (props) => {
     });
 
     //CONCACT RETURNS AN ARRAY WHERE AS PUSH UPDATE AN ARRAY
-     setNotes(notes.concat(note));
+    // use spread operator here
+    // let _notes = [...notes]
+    //  setNotes([...notes, _notes]);
+    //the below line is best approach using spread operator
+    setNotes([...notes, note])
     // setNotes(notes.push(note))
 
     setShouldRefresh((v) => !v);
