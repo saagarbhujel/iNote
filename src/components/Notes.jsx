@@ -13,8 +13,9 @@ const Notes = () => {
 
 
      // FOR UPDATING NOTE
-     const updateNote = (note)=>{
+     const updateNote = (currentNote)=>{
       setModalOpen(true)
+      setNote({etitle:currentNote.title, etag: currentNote.tag, edescription: currentNote.description})
      }
 
      //FOR MODAL
@@ -26,6 +27,23 @@ const Notes = () => {
       setModalOpen(false)
      }
 
+      //EDIT NOTES
+      const [note, setNote] = useState({
+        etitle: "",
+       edescription: "",
+        etag: "default",
+      });
+
+      const addNotes = (e) => {
+        e.preventDefault();
+        console.log("updating notes", note)
+
+      };
+
+      const onChange = (e) => {
+        setNote({ ...note, [e.target.name]: e.target.value });
+      };
+
   return (
     <>
       <AddNote />
@@ -33,8 +51,9 @@ const Notes = () => {
       {/* MODAL */}
 
       <div
-
-        className={`fixed inset-0 flex items-center justify-center z-50 ${modalOpen ? "" : "hidden"} `}
+        className={`fixed inset-0 flex items-center justify-center z-50 ${
+          modalOpen ? "" : "hidden"
+        } `}
       >
         {/* <!-- Modal background --> */}
         <div className="fixed inset-0 bg-gray-800 opacity-75"></div>
@@ -44,7 +63,10 @@ const Notes = () => {
           {/* <!-- Modal header --> */}
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-xl font-bold">Edit Note</h2>
-            <button onClick={modalClose} className="text-gray-500 hover:text-gray-700">
+            <button
+              onClick={modalClose}
+              className="text-gray-500 hover:text-gray-700"
+            >
               <svg
                 className="h-6 w-6 fill-current"
                 xmlns="http://www.w3.org/2000/svg"
@@ -57,43 +79,57 @@ const Notes = () => {
 
           {/* <!-- Modal body --> */}
           <div className="mb-4">
-            <label htmlFor="input1" className="block text-gray-700  mb-2">
+            <label htmlFor="title" className="block text-gray-700  mb-2">
               Title:
             </label>
             <input
-              id="input1"
+              id="etitle"
+              name="etitle"
+              required
               type="text"
+              value={note.etitle}
+              onChange={onChange}
               className="w-full border border-gray-300 rounded focus:outline-none focus:border-blue-500 px-3 py-2"
             />
           </div>
 
           <div className="mb-4">
-            <label htmlFor="input2" className="block text-gray-700  mb-2">
+            <label htmlFor="tag" className="block text-gray-700  mb-2">
               Tag:
             </label>
             <input
-              id="input2"
+              id="etag"
+              name="etag"
               type="text"
+              value={note.etag}
+              onChange={onChange}
               className="w-full border border-gray-300 rounded focus:outline-none focus:border-blue-500 px-3 py-2"
             />
           </div>
 
           <div className="mb-4">
-            <label htmlFor="textarea" className="block text-gray-700  mb-2">
+            <label htmlFor="description" className="block text-gray-700  mb-2">
               Description:
             </label>
             <textarea
-              id="textarea"
+              id="edescription"
+              name="edescription"
+              required
+              value={note.edescription}
+              onChange={onChange}
               className="w-full border border-gray-300 rounded focus:outline-none focus:border-blue-500 px-3 py-2 resize-none"
             ></textarea>
           </div>
 
           {/* <!-- Modal footer --> */}
           <div className="flex justify-end">
-            <button className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded">
-              Save
+            <button onClick={addNotes} className="px-4 py-2 bg-purple-900 hover:bg-purple-600 text-white rounded">
+              Update
             </button>
-            <button onClick={modalClose} className="px-4 py-2 ml-2 bg-gray-300 hover:bg-gray-400 rounded">
+            <button
+              onClick={modalClose}
+              className="px-4 py-2 ml-2 bg-gray-300 hover:bg-gray-400 rounded"
+            >
               Cancel
             </button>
           </div>
