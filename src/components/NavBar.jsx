@@ -56,12 +56,12 @@ const NavBar = () => {
             </Link>
           </ul>
           <div className="auth-btn flex">
-            <Link className="" to="/Login">
+            <Link className="" to="/login">
               <button className="bg-black hover:bg-white text-white hover:text-black mx-1 py-1 px-4 rounded">
                 Login
               </button>
             </Link>
-            <Link className="" to="/Signup">
+            <Link className="" to="/signup">
               <button className="bg-black hover:bg-white text-white hover:text-black mx-1 py-1 px-4 rounded">
                 SignUp
               </button>
