@@ -11,6 +11,7 @@ const AddNote = () => {
     const addNotes =(e)=>{
         e.preventDefault()
         addNote(note.title, note.description, note.tag)
+        setNote({title:"", description:"", tag:""})
     }
 
     const onChange= (e)=>{
@@ -33,6 +34,7 @@ const AddNote = () => {
               type="text"
               id="title"
               name="title"
+              value={note.title}
               required
               onChange={onChange}
             />
@@ -45,6 +47,7 @@ const AddNote = () => {
               className="w-[18rem] sm:w-[20rem] md:w-[32rem] lg:w-[40rem] rounded py-2 px-4 h-32 md:h-52 lg:h-72 resize-none    border border-gray-400  focus:outline-none focus:border-blue-500"
               id="description"
               name="description"
+              value={note.description}
               placeholder="At least 8 character."
               required
               onChange={onChange}
