@@ -28,7 +28,7 @@ const NavBar = () => {
       {/* FOR BIIGER DEVICES */}
       <nav className=" fixed top-0 w-full flex justify-between h-15 mx-w-[1240px] mx-auto px-4 bg-purple-900 text-white py-3 text-lg  z-10 ">
         <h1 className="w-full text-3xl font-bold text-[#ffffff] ">iNote</h1>
-        <div className="nav-list">
+        <div className="nav-list flex justify-center items-center">
           <ul className="hidden md:flex justify-center px-4 mr-16 gap-[4vw] uppercase">
             <Link
               className={`${
@@ -36,9 +36,7 @@ const NavBar = () => {
               } `}
               to="/"
             >
-              <li className=" hover:underline underline-offset-8">
-                Home
-              </li>
+              <li className=" hover:underline underline-offset-8">Home</li>
             </Link>
             <Link
               className={`${
@@ -46,9 +44,7 @@ const NavBar = () => {
               }`}
               to="/about"
             >
-              <li className="hover:underline underline-offset-8">
-                About
-              </li>
+              <li className="hover:underline underline-offset-8">About</li>
             </Link>
             <Link
               className={`${
@@ -56,11 +52,21 @@ const NavBar = () => {
               }`}
               to="/contact"
             >
-              <li className="hover:underline underline-offset-8">
-                Contact
-              </li>
+              <li className="hover:underline underline-offset-8">Contact</li>
             </Link>
           </ul>
+          <div className="auth-btn flex">
+            <Link className="" to="/Login">
+              <button className="bg-black hover:bg-white text-white hover:text-black mx-1 py-1 px-4 rounded">
+                Login
+              </button>
+            </Link>
+            <Link className="" to="/Signup">
+              <button className="bg-black hover:bg-white text-white hover:text-black mx-1 py-1 px-4 rounded">
+                SignUp
+              </button>
+            </Link>
+          </div>
         </div>
 
         {/* FOR MOBILE */}
@@ -90,7 +96,10 @@ const NavBar = () => {
               <li className="p-4  hover:underline underline-offset-8">Home</li>
             </Link>
             <Link
-               className={`${location.pathname === "/about" ? "text-orange-400":"" }`} to="/about"
+              className={`${
+                location.pathname === "/about" ? "text-orange-400" : ""
+              }`}
+              to="/about"
             >
               <li className="p-4 hover:underline underline-offset-8 ">About</li>
             </Link>
@@ -100,7 +109,9 @@ const NavBar = () => {
               }`}
               to="/contact"
             >
-              <li className="p-4  hover:underline underline-offset-8">Contact</li>
+              <li className="p-4  hover:underline underline-offset-8">
+                Contact
+              </li>
             </Link>
           </ul>
         </div>
