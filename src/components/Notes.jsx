@@ -151,7 +151,11 @@ const updateNote = (currentNote) => {
         <h2 className="text-[1.8rem] underline underline-offset-4 mx-5">
           Your Notes
         </h2>
+          <div className="empty-note-msg mx-4">
+          {notes.length === 0 && "No notes to display."}
+          </div>
         <div className="md:grid grid-cols-3 content-center lg:grid-cols-4 ">
+
           {notes.map((note, index) => {
             // console.log(note)
             return (
