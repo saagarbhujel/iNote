@@ -20,13 +20,16 @@ const AddNote = () => {
     <>
       <div className=" flex justify-center items-center flex-col mt-20">
         <h1 className="text-[2rem] underline underline-offset-4">Add a Note</h1>
-        <form action="submit" className="max-w-md mx-auto">
-          <div className="mb-4">
+        <form
+          action="submit"
+          className="max-w-md mx-auto flex justify-center items-center flex-col"
+        >
+          <div className=" my-4 ">
             <label htmlFor="title" className="form-label block mb-2">
               Title:
             </label>
             <input
-              className="w-full border border-gray-400 rounded py-2 px-4 focus:outline-none focus:border-blue-500"
+              className="w-[18rem] sm:w-[20rem] md:w-[32rem] lg:w-[40rem] md:h-10 lg:h-12 border border-gray-400 rounded py-2 px-4 focus:outline-none focus:border-blue-500"
               type="text"
               id="title"
               name="title"
@@ -34,21 +37,25 @@ const AddNote = () => {
               onChange={onChange}
             />
           </div>
-          <div className="mb-4">
+          <div className="mb-4 ">
             <label className="block text-gray-700 mb-2" htmlFor="message">
               Message:
             </label>
             <textarea
-              className="w-full border border-gray-400 rounded py-2 px-4 h-32 resize-none focus:outline-none focus:border-blue-500"
+              className="w-[18rem] sm:w-[20rem] md:w-[32rem] lg:w-[40rem] rounded py-2 px-4 h-32 md:h-52 lg:h-72 resize-none    border border-gray-400  focus:outline-none focus:border-blue-500"
               id="description"
               name="description"
+              placeholder="At least 8 character."
               required
               onChange={onChange}
             />
           </div>
         </form>
         <div className="button">
-          <button className="bg-purple-900 hover:bg-purple-600 text-white py-2 px-8 rounded" onClick={addNotes}>
+          <button
+            className="bg-purple-900 hover:bg-purple-600 text-white py-2 px-8 rounded"
+            onClick={addNotes}
+          >
             Add
           </button>
         </div>
