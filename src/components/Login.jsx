@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, {useState} from 'react'
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 
@@ -57,7 +57,7 @@ const Login = () => {
   return (
     <>
       <div className="flex items-center justify-center min-h-screen bg-gray-100">
-        <div className="bg-white p-8 rounded shadow-md">
+        <div className="max-w-md w-full bg-white p-6 rounded shadow-md">
           <h2 className="text-2xl font-bold mb-4">Login</h2>
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
@@ -94,12 +94,17 @@ const Login = () => {
                 placeholder="Enter your password"
               />
             </div>
-            <button
-              className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none"
-              type="submit"
-            >
-              Log in
-            </button>
+            <div className="flex items-center justify-between">
+              <button
+                className="bg-indigo-500 text-white py-2 px-4 rounded focus:outline-none hover:bg-indigo-600"
+                type="submit"
+              >
+                Log in
+              </button>
+              <Link to="/signup" className="text-gray-600">
+                Didn't have an account?
+              </Link>
+            </div>
           </form>
         </div>
       </div>
