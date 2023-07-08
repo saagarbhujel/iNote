@@ -1,9 +1,13 @@
 import axios from 'axios'
 import React, {useState} from 'react'
+import { useNavigate } from "react-router-dom";
+
 
 
 const Login = () => {
   const [credentials, setCredentials] = useState({email:"", password:""})
+    const navigate = useNavigate();
+
 
   const handleSubmit = async (e)=>{
     e.preventDefault()
@@ -18,7 +22,17 @@ const Login = () => {
     });
     console.log(response.data)
     const accessToken = response.data.authToken
-    console.log(accessToken)
+
+
+    if (response.data.success) {
+      //Save the auth token and redirect
+      console.log("logged in")
+      localStorage.setItem('token', accessToken)
+      navigate('/')
+
+    } else {
+      console.log("not logged in")
+    }
     
     } catch (error) {
        if (error.response) {
