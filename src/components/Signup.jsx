@@ -1,9 +1,10 @@
 import axios from "axios";
 import React,{useState} from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const [credentials, setCredentials] = useState({name:"", email:"", password:""});
+  const navigate = useNavigate();
 
 const handleSubmit = async(e) => {
   e.preventDefault();
@@ -19,6 +20,7 @@ const handleSubmit = async(e) => {
   console.log(response.data);
   if (response.data.success) {
     console.log("User created successfully");
+    navigate("/login");
   } else {
     console.log("User creation failed");
   }
@@ -48,7 +50,7 @@ const handleSubmit = async(e) => {
                 className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
                 required
                 onChange={onChange}
-                value={credentials.name}
+                // value={credentials.name}
                 placeholder="Enter your name"
               />
             </div>
@@ -66,7 +68,7 @@ const handleSubmit = async(e) => {
                 className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
                 required
                 onChange={onChange}
-                value={credentials.email}
+                // value={credentials.email}
                 autoComplete="username"
                 placeholder="Enter email address"
               />
@@ -84,8 +86,9 @@ const handleSubmit = async(e) => {
                 name="password"
                 className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
                 required
+                minLength={8}
                 onChange={onChange}
-                value={credentials.password}
+                // value={credentials.password}
                 autoComplete="new-password"
                 placeholder="Enter your password"
               />
@@ -103,8 +106,9 @@ const handleSubmit = async(e) => {
                 name="cpassword"
                 className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
                 required
+                minLength={8}
                 onChange={onChange}
-                value={credentials.cpassword}
+                // value={credentials.cpassword}
                 autoComplete="new-password"
                 placeholder="Enter your password"
               />
