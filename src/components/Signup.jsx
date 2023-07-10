@@ -1,10 +1,28 @@
+import axios from "axios";
 import React,{useState} from "react";
 import { Link } from "react-router-dom";
 
 const Signup = () => {
   const [credentials, setCredentials] = useState({name:"", email:"", password:""});
 
-
+const handleSubmit = async(e) => {
+  e.preventDefault();
+  const response = await axios.post("http://localhost:4000/api/auth/createuser", {
+    name: credentials.name,
+    email: credentials.email,
+    password: credentials.password
+  },{
+    headers: {
+      "Content-Type": "application/json"
+    }
+  });
+  console.log(response.data);
+  if (response.data.success) {
+    console.log("User created successfully");
+  } else {
+    console.log("User creation failed");
+  }
+}
   
 
   const onChange =(e)=>{
