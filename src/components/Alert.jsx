@@ -10,7 +10,7 @@ const Alert = () => {
 
   return (
     <div className="fixed top-[56px] w-full bg-blue-700 text-gray-800 py-2 px-4 shadow-md">
-      {alert.msg}
+      {alert.type}:{alert.msg}
     </div>
   );
 };
