@@ -1,13 +1,22 @@
 import axios from 'axios'
-import React, {useState} from 'react'
+import React, {useContext, useEffect, useState} from 'react'
 import { Link, useNavigate } from "react-router-dom";
+import AlertContext from '../context/alerts/AlertContext';
 
 
 
 const Login = () => {
+
+  const context = useContext(AlertContext)
+  const {showAlert} = context
+
   const [credentials, setCredentials] = useState({email:"", password:""})
     const navigate = useNavigate();
-
+  
+    const handleButtonClick = () => {
+      showAlert("This is an alert message!", "success");
+      console.log("clicked")
+    };
 
   const handleSubmit = async (e)=>{
     e.preventDefault()
@@ -29,9 +38,10 @@ const Login = () => {
       console.log("logged in")
       localStorage.setItem('token', accessToken)
       navigate('/')
-
+      showAlert("Login success","success")
     } else {
       console.log("not logged in")
+      showAlert("Login error","error")
     }
     
     } catch (error) {
@@ -47,6 +57,7 @@ const Login = () => {
          // Something happened in setting up the request that triggered an error
          console.log("Error", error.message);
        }
+       showAlert("Login Failed", "danger")
     }
 
   
@@ -107,6 +118,14 @@ const Login = () => {
             </div>
           </form>
         </div>
+      </div>
+      <div>
+        <button onClick={handleButtonClick}
+          className="bg-indigo-500 text-white py-2 px-4 rounded focus:outline-none hover:bg-indigo-600"
+          type="submit"
+        >
+          Log in
+        </button>
       </div>
     </>
   );
