@@ -13,10 +13,7 @@ const Login = () => {
   const [credentials, setCredentials] = useState({email:"", password:""})
     const navigate = useNavigate();
   
-    const handleButtonClick = () => {
-      showAlert("This is an alert message!", "success");
-      console.log("clicked")
-    };
+   
 
   const handleSubmit = async (e)=>{
     e.preventDefault()
@@ -119,14 +116,7 @@ const Login = () => {
           </form>
         </div>
       </div>
-      <div>
-        <button onClick={handleButtonClick}
-          className="bg-indigo-500 text-white py-2 px-4 rounded focus:outline-none hover:bg-indigo-600"
-          type="submit"
-        >
-          Log in
-        </button>
-      </div>
+      
     </>
   );
 }
