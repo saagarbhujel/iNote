@@ -1,8 +1,15 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import NoteContext from "./NoteContext";
 import axios from "axios";
+import AlertContext from "../alerts/AlertContext"
 
 const NoteState = (props) => {
+
+  //ALERT state
+  const context = useContext(AlertContext)
+  const {showAlert} = context;
+
+
   const URL = "http://localhost:4000";
   const notesInitial = []
   const [notes, setNotes] = useState(notesInitial);
@@ -53,9 +60,12 @@ const NoteState = (props) => {
     setNotes([...notes, note])
     // setNotes(notes.push(note))
 
+    //Alert Message
     setShouldRefresh((v) => !v);
+    showAlert("Note added successfully" ,"success")
   }catch (error) {
     console.log(error)
+    showAlert("Note added failed","Error")
   }
 }
     
