@@ -23,6 +23,8 @@ const NavBar = () => {
   //   console.log(location.pathname)
   // },[location])
 
+
+  
   return (
     <>
       {/* FOR BIIGER DEVICES */}
@@ -55,18 +57,26 @@ const NavBar = () => {
               <li className="hover:underline underline-offset-8">Contact</li>
             </Link>
           </ul>
-          <div className="auth-btn flex">
-            <Link className="" to="/login">
-              <button className="bg-white hover:bg-black text-black hover:text-white mx-1 py-1 px-4 rounded">
-                Login
-              </button>
-            </Link>
-            <Link className="" to="/signup">
-              <button className="bg-white hover:bg-black text-black hover:text-white mx-1 py-1 px-4 rounded">
-                SignUp
-              </button>
-            </Link>
-          </div>
+
+
+          {!localStorage.getItem("token") ? (
+            <div className="auth-btn flex">
+              <Link className="" to="/login">
+                <button className="bg-white hover:bg-black text-black hover:text-white mx-1 py-1 px-4 rounded">
+                  Login
+                </button>
+              </Link>
+              <Link className="" to="/signup">
+                <button className="bg-white hover:bg-black text-black hover:text-white mx-1 py-1 px-4 rounded">
+                  SignUp
+                </button>
+              </Link>
+            </div>
+          ) : (
+            <button onClick={handleLogout} className="bg-white hover:bg-black text-black hover:text-white mx-1 py-1 px-4 rounded">
+              Logout
+            </button>
+          )}
         </div>
 
         {/* FOR MOBILE */}
