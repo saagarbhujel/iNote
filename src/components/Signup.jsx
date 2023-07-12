@@ -1,10 +1,16 @@
 import axios from "axios";
-import React,{useState} from "react";
+import React,{useContext, useState} from "react";
 import { Link, useNavigate } from "react-router-dom";
+import AlertContext from '../context/alerts/AlertContext'
 
 const Signup = () => {
   const [credentials, setCredentials] = useState({name:"", email:"", password:""});
   const navigate = useNavigate();
+
+//ALERT_CONTEXT 
+const context = useContext(AlertContext)
+ const {showAlert} = context;
+
 
 const handleSubmit = async(e) => {
   e.preventDefault();
@@ -19,10 +25,10 @@ const handleSubmit = async(e) => {
   });
   console.log(response.data);
   if (response.data.success) {
-    console.log("User created successfully");
+   showAlert("User created successfully", "success");
     navigate("/login");
   } else {
-    console.log("User creation failed");
+    showAlert("User creation failed","Danger")
   }
 }
   
