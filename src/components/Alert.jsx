@@ -8,10 +8,22 @@ const Alert = () => {
     return null; // If no alert is set, don't render anything
   }
 
+  const { type, msg } = alert;
+
+
   return (
-    <div className="fixed top-[56px] w-full bg-blue-700 text-gray-800 py-2 px-4 shadow-md">
-      {alert.type}:{alert.msg}
-    </div>
+    <>
+      {type === "Success" ? (
+        <div className="fixed top-[56px] w-full bg-blue-700 text-white py-2 px-4 shadow-md">
+          {type}:{msg}
+        </div>
+      ) : (
+        <div className="fixed top-[56px] w-full bg-red text-gray-800 py-2 px-4 shadow-md">
+          {type}:{msg}
+        </div>
+        )}
+
+    </>
   );
 };
 

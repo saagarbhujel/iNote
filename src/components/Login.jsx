@@ -35,10 +35,10 @@ const Login = () => {
       console.log("logged in")
       localStorage.setItem('token', accessToken)
       navigate('/')
-      showAlert("Login success","success")
+      showAlert("Login success","Success")
     } else {
       console.log("not logged in")
-      showAlert("Login error","error")
+      showAlert("Login error","Error")
     }
     
     } catch (error) {
@@ -54,7 +54,7 @@ const Login = () => {
          // Something happened in setting up the request that triggered an error
          console.log("Error", error.message);
        }
-       showAlert("Login Failed", "danger")
+       showAlert("Login Failed", "Error")
     }
 
   

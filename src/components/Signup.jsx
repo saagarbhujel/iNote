@@ -14,7 +14,8 @@ const context = useContext(AlertContext)
 
 const handleSubmit = async(e) => {
   e.preventDefault();
-  const response = await axios.post("http://localhost:4000/api/auth/createuser", {
+  try {
+     const response = await axios.post("http://localhost:4000/api/auth/createuser", {
     name: credentials.name,
     email: credentials.email,
     password: credentials.password
@@ -24,11 +25,19 @@ const handleSubmit = async(e) => {
     }
   });
   console.log(response.data);
+
+
   if (response.data.success) {
-   showAlert("User created successfully", "success");
     navigate("/login");
+    showAlert("User created successfully", "Success");
   } else {
-    showAlert("User creation failed","Danger")
+    showAlert("User creation failed","Error")
+  }
+}
+   catch (error) {
+    console.log(error);
+        
+showAlert("User creation failed","Error");
   }
 }
   
