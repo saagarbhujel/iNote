@@ -3,9 +3,12 @@ import noteContext from "../context/notes/NoteContext";
 import NoteItem from "./NoteItem";
 import AddNote from "./AddNote";
 import { useNavigate } from "react-router-dom";
+import AlertContext from "../context/alerts/AlertContext"
 
 const Notes = () => {
   const context = useContext(noteContext);
+  const context1 = useContext(AlertContext)
+  const {showAlert} = context1
   const { notes, fetchNotes, shouldRefresh,editNote } = context;
    const [note, setNote] = useState({id:"",  etitle: "", edescription: "", etag: "default",  });
    const [modalOpen, setModalOpen] = useState(false);
@@ -17,8 +20,9 @@ const Notes = () => {
       fetchNotes();
       
     } else {
-      navigate("/login")
+      showAlert("Please login to access", "Error")
     }
+
   }, [shouldRefresh]);
 
 
