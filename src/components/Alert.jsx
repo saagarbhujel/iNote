@@ -14,12 +14,12 @@ const Alert = () => {
   return (
     <>
       {type === "Success" ? (
-        <div className="fixed top-[56px] w-full bg-blue-700 text-white py-2 px-4 shadow-md">
-          {type}:{msg}
+        <div className="fixed top-[56px] w-full bg-blue-700 text-white py-2 px-4 shadow-md text-center">
+          {type}: {msg}
         </div>
       ) : (
-        <div className="fixed top-[56px] w-full bg-red text-gray-800 py-2 px-4 shadow-md">
-          {type}:{msg}
+        <div className="fixed top-[56px] w-full bg-red-600 text-white py-2 px-4 shadow-md text-center">
+          {type}: {msg}
         </div>
         )}
 
