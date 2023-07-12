@@ -87,8 +87,10 @@ const NoteState = (props) => {
         });
         setNotes(newNote);
         setShouldRefresh((v) => !v);
+        showAlert("Note deleted successfully","success")
     } catch (error) {
       console.log(error)
+      showAlert("Note deleted failed","Error")
     }
    
 }
