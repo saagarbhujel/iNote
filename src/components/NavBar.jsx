@@ -1,9 +1,17 @@
-import React, { useState,useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import React, { useState,useEffect, useContext } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
+import NoteContext from "../context/notes/NoteContext";
 
 const NavBar = () => {
   const [mobileNav, setMobileNav] = useState(true);
+  const context = useContext(NoteContext)
+  const {clearNotes} = context
+
+
+
+
+  const navigate = useNavigate()
 
   const handdleHam = () => {
     setMobileNav(!mobileNav);
@@ -25,6 +33,15 @@ const NavBar = () => {
 
 
 
+ 
+  const handleLogout = () => {
+    clearNotes(); // Clear the notes data in the context
+    localStorage.removeItem("token");
+    navigate("/login");
+  };
+
+
+
   return (
     <>
       {/* FOR BIIGER DEVICES */}
@@ -38,7 +55,7 @@ const NavBar = () => {
               } `}
               to="/"
             >
-              <li className=" hover:underline underline-offset-8">Home</li>
+              <li className={" hover:underline underline-offset-8"}>Home</li>
             </Link>
             <Link
               className={`${
@@ -58,7 +75,7 @@ const NavBar = () => {
             </Link>
           </ul>
 
-              {/* TOGGLE BETWEEN LOGIN SIGNUP AND LOGOUT */}
+          {/* TOGGLE BETWEEN LOGIN SIGNUP AND LOGOUT */}
           {!localStorage.getItem("token") ? (
             <div className="auth-btn flex">
               <Link className="" to="/login">
@@ -73,11 +90,18 @@ const NavBar = () => {
               </Link>
             </div>
           ) : (
-            <button onClick={handleLogout} className="bg-white hover:bg-black text-black hover:text-white mx-1 py-1 px-4 rounded">
+            <button
+              onClick={handleLogout}
+              className="bg-white hover:bg-black text-black hover:text-white mx-1 py-1 px-4 rounded "
+               
+            >
               Logout
+             
             </button>
           )}
         </div>
+
+
 
 
 
