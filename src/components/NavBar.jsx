@@ -24,7 +24,7 @@ const NavBar = () => {
   // },[location])
 
 
-  
+
   return (
     <>
       {/* FOR BIIGER DEVICES */}
@@ -58,7 +58,7 @@ const NavBar = () => {
             </Link>
           </ul>
 
-
+              {/* TOGGLE BETWEEN LOGIN SIGNUP AND LOGOUT */}
           {!localStorage.getItem("token") ? (
             <div className="auth-btn flex">
               <Link className="" to="/login">
@@ -78,6 +78,8 @@ const NavBar = () => {
             </button>
           )}
         </div>
+
+
 
         {/* FOR MOBILE */}
 
