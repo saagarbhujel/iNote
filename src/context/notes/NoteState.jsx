@@ -62,7 +62,7 @@ const NoteState = (props) => {
 
     //Alert Message for adding messages
     setShouldRefresh((v) => !v);
-    showAlert("Note added successfully" ,"success")
+    showAlert("Note added successfully" ,"Success")
   }catch (error) {
     console.log(error)
     showAlert("Note added failed","Error")
@@ -87,7 +87,7 @@ const NoteState = (props) => {
         });
         setNotes(newNote);
         setShouldRefresh((v) => !v);
-        showAlert("Note deleted successfully","success")
+        showAlert("Note deleted successfully","Success")
     } catch (error) {
       console.log(error)
       showAlert("Note deleted failed","Error")
@@ -112,8 +112,10 @@ const NoteState = (props) => {
       });
       // console.log('updated note',response.data)
       setShouldRefresh((v) => !v);
+      showAlert("Note updated successfully","Success")
     } catch (error) {
       console.log(error)
+      showAlert("Note update failed","Error")
     }
     for (let index = 0; index < notes.length; index++) {
       const element = notes[index];
