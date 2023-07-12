@@ -107,7 +107,7 @@ const NoteState = (props) => {
          headers: {
             "Content-Type": "application/json",
             "auth-token":
-              lo,
+              localStorage.getItem("token"),
           },
       });
       // console.log('updated note',response.data)
