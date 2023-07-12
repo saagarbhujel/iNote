@@ -60,7 +60,7 @@ const NoteState = (props) => {
     setNotes([...notes, note])
     // setNotes(notes.push(note))
 
-    //Alert Message
+    //Alert Message for adding messages
     setShouldRefresh((v) => !v);
     showAlert("Note added successfully" ,"success")
   }catch (error) {
