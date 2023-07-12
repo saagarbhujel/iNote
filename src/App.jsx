@@ -6,18 +6,18 @@ import NavBar from "./components/NavBar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NoteState from "./context/notes/NoteState";
 import Signup from "./components/Signup";
-import Login from "./components/login";
+import Login from "./components/Login";
 import AlertState from "./context/alerts/AlertState";
 import Alert from "./components/Alert";
 
 function App() {
   return (
     <>
-      <NoteState>
-        <AlertState>
+      <AlertState>
+        <NoteState>
           <BrowserRouter>
             <NavBar />
-            <Alert/>
+            <Alert />
             <Routes>
               <Route exact path="/" element={<Home />}></Route>
               <Route exact path="/about" element={<About />}></Route>
@@ -26,8 +26,8 @@ function App() {
               <Route exact path="/signup" element={<Signup />}></Route>
             </Routes>
           </BrowserRouter>
-        </AlertState>
-      </NoteState>
+        </NoteState>
+      </AlertState>
     </>
   );
 }
