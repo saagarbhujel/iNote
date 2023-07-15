@@ -1,22 +1,33 @@
-import React,{useContext,useState,} from 'react'
+import React, { useContext, useEffect, useState } from "react";
 import noteContext from "../context/notes/NoteContext";
+import AlertContext from "../context/alerts/AlertContext";
 
 const AddNote = () => {
-    const context = useContext(noteContext);
-    const [note, setNote] = useState({title:"", description : "", tag:"default"})
-    const { addNote } = context;
+  const context = useContext(noteContext);
+  const contextAlert = useContext(AlertContext);
+  const [note, setNote] = useState({
+    title: "",
+    description: "",
+    tag: "default",
+  });
 
 
+  const { addNote } = context;
+  const { showAlert } = contextAlert;
 
-    const addNotes =(e)=>{
-        e.preventDefault()
-        addNote(note.title, note.description, note.tag)
-        setNote({title:"", description:"", tag:""})
+  const addNotes = (e) => {
+    if (localStorage.getItem("token")) {
+      e.preventDefault();
+      addNote(note.title, note.description, note.tag);
+      setNote({ title: "", description: "", tag: "" });
+    } else {
+      showAlert("Please login to add a note", "Error");
     }
+  };
 
-    const onChange= (e)=>{
-        setNote({...note, [e.target.name]: e.target.value})
-    }
+  const onChange = (e) => {
+    setNote({ ...note, [e.target.name]: e.target.value });
+  };
   return (
     <>
       <div className=" flex justify-center items-center flex-col mt-20">
@@ -50,7 +61,6 @@ const AddNote = () => {
               value={note.description}
               placeholder="At least 8 character."
               required
-              onChange={onChange}
             />
           </div>
         </form>
@@ -65,6 +75,6 @@ const AddNote = () => {
       </div>
     </>
   );
-}
+};
 
-export default AddNote
+export default AddNote;
