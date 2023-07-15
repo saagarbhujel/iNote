@@ -61,6 +61,7 @@ const AddNote = () => {
               value={note.description}
               placeholder="At least 8 character."
               required
+              onChange={onChange}
             />
           </div>
         </form>
