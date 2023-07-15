@@ -2,11 +2,16 @@ import React, { useState,useEffect, useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import NoteContext from "../context/notes/NoteContext";
+import AlertContext from "../context/alerts/AlertContext"
 
 const NavBar = () => {
   const [mobileNav, setMobileNav] = useState(true);
   const context = useContext(NoteContext)
   const {clearNotes} = context
+  
+  const context1 = useContext(AlertContext)
+  const {showAlert} = context1
+
 
 
 
@@ -38,6 +43,7 @@ const NavBar = () => {
     clearNotes(); // Clear the notes data in the context
     localStorage.removeItem("token");
     navigate("/login");
+    showAlert("Logout Successfull", "Success")
   };
 
 
