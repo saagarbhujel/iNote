@@ -172,7 +172,7 @@ const Notes = () => {
           <p className="mb-6">Are you sure you want to update note?</p>
           <div className="flex justify-end">
             <button
-              className="px-4 py-2 text-white bg-purple-800 hover:bg-purple-600 rounded mr-2"
+              className="px-4 py-2 text-white bg-purple-900 hover:bg-purple-600 rounded mr-2"
               onClick={addNotes}
             >
               Update
