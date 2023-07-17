@@ -3,65 +3,70 @@ import noteContext from "../context/notes/NoteContext";
 import NoteItem from "./NoteItem";
 import AddNote from "./AddNote";
 import { useNavigate } from "react-router-dom";
-import AlertContext from "../context/alerts/AlertContext"
+import AlertContext from "../context/alerts/AlertContext";
 
 const Notes = () => {
   const context = useContext(noteContext);
-  const context1 = useContext(AlertContext)
-  const {showAlert} = context1
-  const { notes, fetchNotes, shouldRefresh,editNote } = context;
-   const [note, setNote] = useState({id:"",  etitle: "", edescription: "", etag: "default",  });
-   const [modalOpen, setModalOpen] = useState(false);
-   const navigate = useNavigate;
-  
+  const context1 = useContext(AlertContext);
+  const { showAlert } = context1;
+  const { notes, fetchNotes, shouldRefresh, editNote } = context;
+  const [note, setNote] = useState({
+    id: "",
+    etitle: "",
+    edescription: "",
+    etag: "default",
+  });
+  const [modalOpen, setModalOpen] = useState(false);
+  const navigate = useNavigate;
+  const [updateModal, setUpdateModal] = useState(false);
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
       fetchNotes();
-      
     } else {
-      showAlert("Please login to access", "Error")
+      showAlert("Please login to access", "Error");
     }
-
   }, [shouldRefresh]);
 
-
-
-
   // FOR UPDATING NOTE
-const updateNote = (currentNote) => {
-  setModalOpen(true);
-  setNote({
-    id: currentNote._id,
-    etitle: currentNote.title,
-    etag: currentNote.tag,
-    edescription: currentNote.description,
-  });
-};
+  const updateNote = (currentNote) => {
+    setModalOpen(true);
+    setNote({
+      id: currentNote._id,
+      etitle: currentNote.title,
+      etag: currentNote.tag,
+      edescription: currentNote.description,
+    });
+  };
 
   //FOR MODAL
+
   const modalClose = () => {
     setModalOpen(false);
   };
-  
-  
+
   //EDIT NOTES
   const addNotes = (e) => {
     e.preventDefault();
     // console.log("updating notes", note);
-    editNote(note.id, note.etitle, note.edescription, note.etag)
-    modalClose()
+    editNote(note.id, note.etitle, note.edescription, note.etag);
+
+    updateModalClose();
   };
 
   const onChange = (e) => {
     setNote({ ...note, [e.target.name]: e.target.value });
   };
 
+  //CONFORMATION MODAL FOR UPDATE
+  const updateModalOpen = () => {
+    setUpdateModal(true);
+    modalClose();
+  };
 
-
-
-  
-
+  const updateModalClose = () => {
+    setUpdateModal(false);
+  };
 
   return (
     <>
@@ -143,7 +148,7 @@ const updateNote = (currentNote) => {
           {/* <!-- Modal footer --> */}
           <div className="flex justify-end">
             <button
-              onClick={addNotes}
+              onClick={updateModalOpen}
               className="px-4 py-2 bg-purple-900 hover:bg-purple-600 text-white rounded"
             >
               Update
@@ -158,15 +163,40 @@ const updateNote = (currentNote) => {
         </div>
       </div>
 
+      {/* CONFORMATION MODAL FOR UPDATING NOTE  */}
+      <div
+        className={`fixed inset-0 flex items-center justify-center z-50 
+      ${updateModal ? "" : "hidden"} `}
+      >
+        <div className="fixed inset-0 bg-gray-800 opacity-75"></div>
+        <div className="bg-white rounded shadow-lg p-4 max-w-sm w-full z-10">
+          <h3 className="text-xl mb-4">Update Conformation</h3>
+          <p className="mb-6">Are you sure you want to update note?</p>
+          <div className="flex justify-end">
+            <button
+              className="px-4 py-2 text-white bg-purple-800 hover:bg-purple-600 rounded me-2"
+              onClick={addNotes}
+            >
+              Update
+            </button>
+            <button
+              className="px-4 py-2 text-gray-600 bg-gray-200 hover:bg-gray-300 rounded"
+              onClick={updateModalClose}
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+
       <div className=" mt-4 mb-4 mx-5">
         <h2 className="text-[1.8rem] underline underline-offset-4 mx-5">
           Your Notes
         </h2>
-          <div className="empty-note-msg mx-4">
+        <div className="empty-note-msg mx-4">
           {notes.length === 0 && "No notes to display."}
-          </div>
+        </div>
         <div className="md:grid grid-cols-3 content-center lg:grid-cols-4 ">
-
           {notes.map((note, index) => {
             // console.log(note)
             return (
