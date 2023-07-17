@@ -131,11 +131,11 @@ showAlert("User creation failed","Error");
             <div className="flex items-center justify-between">
               <button
                 type="submit"
-                className="bg-indigo-500 text-white py-2 px-4 rounded focus:outline-none hover:bg-indigo-600"
+                className="bg-purple-900 text-white py-2 px-4 rounded focus:outline-none hover:bg-purple-600"
               >
                 Sign Up
               </button>
-              <Link to="/login" className="text-gray-600">
+              <Link to="/login" className="text-gray-600 hover:text-purple-700">
                 Already have an account?
               </Link>
             </div>
