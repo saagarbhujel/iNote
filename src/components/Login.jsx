@@ -104,12 +104,12 @@ const Login = () => {
             </div>
             <div className="flex items-center justify-between">
               <button
-                className="bg-indigo-500 text-white py-2 px-4 rounded focus:outline-none hover:bg-indigo-600"
+                className="bg-purple-900 text-white py-2 px-4 rounded focus:outline-none hover:bg-purple-600"
                 type="submit"
               >
                 Log in
               </button>
-              <Link to="/signup" className="text-gray-600">
+              <Link to="/signup" className="text-gray-600 hover:text-purple-700">
                 Didn't have an account?
               </Link>
             </div>
