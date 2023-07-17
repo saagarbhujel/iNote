@@ -71,14 +71,14 @@ const NavBar = () => {
         <p className="mb-6">Are you sure you want to logout?</p>
         <div className="flex justify-end">
           <button
-            className="px-4 py-2 text-white bg-blue-500 rounded mr-2"
+            className="px-4 py-2 text-white bg-purple-900 hover:bg-purple-600 rounded mr-2"
             onClick={handleLogout}
 
           >
             Logout
           </button>
           <button
-            className="px-4 py-2 text-gray-600 bg-gray-200 rounded"
+            className="px-4 py-2 text-gray-600 bg-gray-200 hover:bg-gray-300 rounded"
             onClick={modalClose}
           >
             Cancel
