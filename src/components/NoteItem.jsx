@@ -5,14 +5,44 @@ const NoteItem = (props) => {
   const { note, updateNote } = props;
   const context = useContext(noteContext);
   const { deleteNote } = context;
-
+  const [deleteModal, setDeleteModal] = useState(false);
 
   const noteDelete = () => {
     deleteNote(note._id);
   };
 
+  const deleteModalOpen = () => {
+    setDeleteModal(true);
+  };
+
+  const deleteModalClose =()=>{
+    setDeleteModal(false)
+  }
+
   return (
     <>
+      {/* CONFORMATION MODAL FOR DELETING NOTE */}
+
+      <div
+        className={`fixed inset-0 flex items-center justify-center z-50 ${
+          deleteModal ? "" : "hidden"
+        }`}
+      >
+        <div className="fixed inset-0 bg-gray-800 opacity-75"></div>
+        <div className=" bg-white rounded shadow-lg p-4 max-w-sm w-full z-10">
+          <h3 className=" text-xl mb-4">Delete Conformation</h3>
+          <p className="mb-6">Are you sure you want to delete note?</p>
+          <div className="flex justify-end">
+            <button className="px-4 py-2 text-white bg-purple-900 hover:bg-purple-600 rounded mr-2 " onClick={noteDelete}>
+              Delete
+            </button>
+            <button className="px-4 py-2 text-gray-260 bg-gray-200 hover:bg-gray-300 rounded" onClick={deleteModalClose}>
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+
       {/* {note.title}
       {note.description} */}
       <div className="card border rounded-lg shadow-md hover:shadow-lg m-4 p-4  columns-md ">
@@ -44,7 +74,7 @@ const NoteItem = (props) => {
                 strokeWidth={1.5}
                 stroke="currentColor"
                 className="w-6 h-6 cursor-pointer hover:stroke-purple-700"
-                onClick={noteDelete}
+                onClick={deleteModalOpen}
               >
                 <path
                   strokeLinecap="round"
@@ -57,8 +87,6 @@ const NoteItem = (props) => {
           <div className="card-description text-gray-700">
             {note.description}
           </div>
-
-          <div></div>
         </div>
       </div>
     </>
