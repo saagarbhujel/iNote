@@ -108,7 +108,7 @@ showAlert("User creation failed","Error");
                 placeholder="Enter your password"
               />
             </div>
-            <div className="mb-4">
+            {/* <div className="mb-4">
               <label
                 htmlFor="cpassword"
                 className="block text-gray-700 text-sm font-bold mb-2"
@@ -127,7 +127,7 @@ showAlert("User creation failed","Error");
                 autoComplete="new-password"
                 placeholder="Enter your password"
               />
-            </div>
+            </div> */}
             <div className="flex items-center justify-between">
               <button
                 type="submit"
