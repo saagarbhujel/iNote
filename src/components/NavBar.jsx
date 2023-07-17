@@ -11,6 +11,7 @@ const NavBar = () => {
   
   const context1 = useContext(AlertContext)
   const {showAlert} = context1
+  const [modalOpen, setModalOpen] = useState(false)
 
 
 
@@ -44,12 +45,48 @@ const NavBar = () => {
     localStorage.removeItem("token");
     navigate("/login");
     showAlert("Logout Successfull", "Success")
+    modalClose()
   };
 
+  const modalPop =()=>{
+    setModalOpen(true)
+  }
+
+  const modalClose =()=>{
+    setModalOpen(false)
+  }
 
 
   return (
     <>
+{/* MODAL FOR CONFORMATION OF LOGOUT */}
+<div
+      className={`fixed inset-0 flex items-center justify-center z-50 ${
+        modalOpen ? '' : 'hidden'
+      }`}
+    >
+       <div className="fixed inset-0 bg-gray-800 opacity-75"></div>
+      <div className="bg-white rounded shadow-lg  p-4 max-w-sm w-full z-10">
+        <h3 className="text-xl mb-4">Logout Confirmation</h3>
+        <p className="mb-6">Are you sure you want to logout?</p>
+        <div className="flex justify-end">
+          <button
+            className="px-4 py-2 text-white bg-blue-500 rounded mr-2"
+            onClick={handleLogout}
+
+          >
+            Logout
+          </button>
+          <button
+            className="px-4 py-2 text-gray-600 bg-gray-200 rounded"
+            onClick={modalClose}
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+
       {/* FOR BIIGER DEVICES */}
       <nav className=" fixed top-0 w-full flex justify-between h-15 mx-w-[1240px] mx-auto px-4 bg-purple-900 text-white py-3 text-lg  z-10 ">
         <h1 className="w-full text-3xl font-bold text-[#ffffff] ">iNote</h1>
@@ -97,7 +134,7 @@ const NavBar = () => {
             </div>
           ) : (
             <button
-              onClick={handleLogout}
+              onClick={modalPop}
               className="bg-white hover:bg-black text-black hover:text-white mx-1 py-1 px-4 rounded "
                
             >
