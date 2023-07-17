@@ -8,7 +8,7 @@ const About = () => {
           Welcome to our note-taking web app!
         </h1>
       </div>
-      <div className="aboutContainer w-3/4 m-auto break-before-all scroll-smooth">
+      <div className="aboutContainer w-3/4 m-auto mb-10 break-before-all scroll-smooth">
         <div className="mt-4">
           <p className="text-[14px] md:text-[16px]">
             At our app, we believe in the power of effective note-taking to
