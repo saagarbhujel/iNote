@@ -30,7 +30,7 @@ const AddNote = () => {
   };
   return (
     <>
-      <div className=" flex justify-center items-center flex-col mt-20">
+      <div className=" flex justify-center items-center flex-col mt-28">
         <h1 className="text-[2rem] underline underline-offset-4">Add a Note</h1>
         <form
           action="submit"
