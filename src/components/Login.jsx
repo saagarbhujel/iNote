@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, {useContext, useState} from 'react'
+import  {useContext, useState} from 'react'
 import { Link, useNavigate } from "react-router-dom";
 import AlertContext from '../context/alerts/AlertContext';
 
@@ -110,7 +110,7 @@ const Login = () => {
                 Log in
               </button>
               <Link to="/signup" className="text-gray-600 hover:text-purple-700">
-                Didn't have an account?
+               Didn&apos;t have an account?
               </Link>
             </div>
           </form>

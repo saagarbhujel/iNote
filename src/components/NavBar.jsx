@@ -1,4 +1,4 @@
-import React, { useState,useEffect, useContext } from "react";
+import  { useState, useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import NoteContext from "../context/notes/NoteContext";
