@@ -2,13 +2,13 @@ import { useContext, useState } from "react";
 import NoteContext from "./NoteContext";
 import axios from "axios";
 import AlertContext from "../alerts/AlertContext"
+import  {URL,URL_Update} from "../../components/URL"
 
 const NoteState = (props) => {
   //ALERT state
   const context = useContext(AlertContext);
   const { showAlert } = context;
 
-  const URL = "http://localhost:4000";
   const notesInitial = [];
   const [notes, setNotes] = useState(notesInitial);
   const [shouldRefresh, setShouldRefresh] = useState([]);
@@ -16,7 +16,7 @@ const NoteState = (props) => {
   //FETCH ALL NOTES
   const fetchNotes = async () => {
     try {
-      const dbNotes = await axios.get(`${URL}/api/notes/notes `, {
+      const dbNotes = await axios.get(`${URL} `, {
         headers: {
           "Content-Type": "application/json",
           "auth-token": localStorage.getItem("token"),
@@ -33,7 +33,7 @@ const NoteState = (props) => {
   const addNote = async (title, description, tag) => {
     try {
       const note = await axios.post(
-        `${URL}/api/notes/notes`,
+        `${URL}`,
         {
           title,
           description,
@@ -67,7 +67,7 @@ const NoteState = (props) => {
   //DELETE NOTES
   const deleteNote = async (id) => {
     try {
-      await axios.delete(`${URL}/api/notes/notes/${id} `, {
+      await axios.delete(`${URL}/${id} `, {
         headers: {
           "Content-Type": "application/json",
           "auth-token": localStorage.getItem("token"),
@@ -91,7 +91,7 @@ const NoteState = (props) => {
   const editNote = async (id, title, description, tag) => {
     try {
       const response = await axios.put(
-        `${URL}/api/notes/updatenotes/${id}`,
+        `${URL_Update}/${id}`,
         {
           title,
           description,
