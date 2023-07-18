@@ -3,6 +3,7 @@ import NoteContext from "./NoteContext";
 import axios from "axios";
 import AlertContext from "../alerts/AlertContext"
 import  {URL,URL_Update} from "../../components/URL"
+import PropTypes from "prop-types";
 
 const NoteState = (props) => {
   //ALERT state
@@ -91,7 +92,7 @@ const NoteState = (props) => {
   //EDIT NOTES
   const editNote = async (id, title, description, tag) => {
     try {
-      const response = await axios.put(
+       await axios.put(
         `${URL_Update}/${id}`,
         {
           title,
@@ -144,6 +145,9 @@ const NoteState = (props) => {
       </NoteContext.Provider>
     </>
   );
+};
+NoteState.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export default NoteState;

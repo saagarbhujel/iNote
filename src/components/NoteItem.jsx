@@ -1,5 +1,6 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import noteContext from "../context/notes/NoteContext";
+import PropTypes from "prop-types";
 
 const NoteItem = (props) => {
   const { note, updateNote } = props;
@@ -91,6 +92,11 @@ const NoteItem = (props) => {
       </div>
     </>
   );
+  
 };
 
+NoteItem.propTypes = {
+  note: PropTypes.object.isRequired,
+  updateNote: PropTypes.func.isRequired,
+}
 export default NoteItem;

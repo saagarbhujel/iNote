@@ -1,6 +1,7 @@
-import React from 'react'
-import { useState,useContext } from "react";
+
+import { useState, } from "react";
 import AlertContext from "./AlertContext";
+import PropTypes from "prop-types";
 
 const AlertState = (props) => {
 
@@ -24,5 +25,8 @@ const AlertState = (props) => {
     </>
   )
 }
+AlertState.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export default AlertState
