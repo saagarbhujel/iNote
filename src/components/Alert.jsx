@@ -1,8 +1,8 @@
-import React, { useContext } from "react";
+import  { useContext } from "react";
 import  AlertContext  from "../context/alerts/AlertContext";
 
 const Alert = () => {
-  const { alert, showAlert } = useContext(AlertContext);
+  const { alert } = useContext(AlertContext);
 
   if (!alert) {
     return null; // If no alert is set, don't render anything
