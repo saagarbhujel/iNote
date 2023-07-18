@@ -43,7 +43,7 @@ To get started with iNote, follow these steps:
 Contributions to iNote are always welcome! If you find any bugs, issues, or have suggestions for improvements, please open an issue or submit a pull request. Make sure to follow the project's code of conduct.
 
 ## License
-This project is licensed under the MIT License.
+This project is licensed under the [MIT License](LICENSE).
 
 ## Contact
 If you have any questions, suggestions, or just want to say hello, you can reach out to the project maintainer at saagarbhujel22@gmail.com.com.
