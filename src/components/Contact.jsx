@@ -3,7 +3,7 @@ const Contact = () => {
     <>
 
       <div className="mt-20 flex jusify-center items-center flex-col mx-auto p-8">
-        <h1 className="text-2xl font-bold mb-4">Contact Us</h1>
+        <h1 className="text-4xl font-bold mb-10 underline underline-offset-4">Contact Us</h1>
         <form className="w-full max-w-lg">
           <div className="flex flex-wrap -mx-3 mb-4">
             <div className="w-full md:w-1/2 px-3 mb-4 md:mb-0">
@@ -53,6 +53,7 @@ const Contact = () => {
           <div className="flex justify-end">
             <button
               type="submit"
+              disabled
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             >
               Submit
