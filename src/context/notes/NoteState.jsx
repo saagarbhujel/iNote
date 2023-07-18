@@ -25,7 +25,8 @@ const NoteState = (props) => {
       setNotes(dbNotes.data);
       //  console.log(dbNotes.data);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
+      showAlert("Fetching note failed","Error")
     }
   };
 
@@ -59,7 +60,7 @@ const NoteState = (props) => {
       setShouldRefresh((v) => !v);
       showAlert("Note added successfully", "Success");
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       showAlert("Note added failed", "Error");
     }
   };
@@ -82,7 +83,7 @@ const NoteState = (props) => {
       setShouldRefresh((v) => !v);
       showAlert("Note deleted successfully", "Success");
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       showAlert("Note deleted failed", "Error");
     }
   };
@@ -108,7 +109,7 @@ const NoteState = (props) => {
       setShouldRefresh((v) => !v);
       showAlert("Note updated successfully", "Success");
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       showAlert("Note update failed", "Error");
     }
     for (let index = 0; index < notes.length; index++) {

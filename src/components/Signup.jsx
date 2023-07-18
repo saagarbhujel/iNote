@@ -24,7 +24,7 @@ const handleSubmit = async(e) => {
       "Content-Type": "application/json"
     }
   });
-  console.log(response.data);
+  // console.log(response.data);
 
 
   if (response.data.success) {
@@ -35,7 +35,7 @@ const handleSubmit = async(e) => {
   }
 }
    catch (error) {
-    console.log(error);
+    // console.log(error);
         
 showAlert("User creation failed","Error");
   }

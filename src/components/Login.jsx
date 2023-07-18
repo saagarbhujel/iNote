@@ -26,33 +26,33 @@ const Login = () => {
         "Content-Type": "application/json",
       }
     });
-    console.log(response.data)
+    // console.log(response.data)
     const accessToken = response.data.authToken
 
 
     if (response.data.success) {
       //Save the auth token and redirect
-      console.log("logged in")
+      // console.log("logged in")
       localStorage.setItem('token', accessToken)
       navigate('/')
       showAlert("Login success","Success")
     } else {
-      console.log("not logged in")
+      // console.log("not logged in")
       showAlert("Login error","Error")
     }
     
     } catch (error) {
        if (error.response) {
          // The request was made and the server responded with a status code
-         console.log(error.response.data); // Response data from the server
-         console.log(error.response.status); // Status code
-         console.log(error.response.headers); // Response headers
+        //  console.log(error.response.data); // Response data from the server
+        //  console.log(error.response.status); // Status code
+        //  console.log(error.response.headers); // Response headers
        } else if (error.request) {
          // The request was made but no response was received
-         console.log(error.request);
+        //  console.log(error.request);
        } else {
          // Something happened in setting up the request that triggered an error
-         console.log("Error", error.message);
+        //  console.log("Error", error.message);
        }
        showAlert("Login Failed", "Error")
     }
